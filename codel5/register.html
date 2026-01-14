@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Đăng ký</title>
+  <script>
+    function validate(){
+      if (document.dangky.userName.value===""){
+        alert("Bạn chưa nhập tên đăng nhập");
+        return false;
+      }
+      if (document.dangky.password.value===""){
+        alert("Bạn chưa nhập mật khẩu");
+        return false;
+      }
+      if (document.dangky.confirmPassword.value===""){
+        alert("Bạn chưa xác nhận mật khẩu");
+        return false;
+      }
+      if (document.dangky.confirmPassword.value!==document.dangky.password.value){
+        alert("Mật khẩu và xác nhận mật khẩu không trùng khớp");
+        return false;
+      }
+      var age = parseInt(document.dangky.age.value);
+      if (!age || age<=0 || age>150){
+        alert("Tuổi nhập vào không hợp lệ");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+<form action="register.php" method="post" onsubmit="return validate()" name="dangky">
+  <fieldset style="width:360px">
+    <legend>Thông tin đăng ký</legend>
+    <table>
+      <tr>
+        <td>Tên đăng nhập (*)</td>
+        <td><input name="userName" type="text" maxlength="50" /></td>
+      </tr>
+      <tr>
+        <td>Mật khẩu (*)</td>
+        <td><input name="password" type="password" maxlength="50" /></td>
+      </tr>
+      <tr>
+        <td>Nhập lại mật khẩu (*)</td>
+        <td><input name="confirmPassword" type="password" maxlength="50" /></td>
+      </tr>
+      <tr>
+        <td>Họ và tên</td>
+        <td><input type="text" name="fullName" /></td>
+      </tr>
+      <tr>
+        <td>Giới tính</td>
+        <td>
+          <label><input type="radio" name="gender" value="1" checked /> Nam</label>
+          <label><input type="radio" name="gender" value="0" /> Nữ</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Tuổi</td>
+        <td><input type="text" name="age" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <button type="submit" name="addUser" value="1">Đăng ký</button>
+          <button type="reset">Hủy</button>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+</body>
+</html>
